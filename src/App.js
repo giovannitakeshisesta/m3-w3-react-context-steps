@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+
+//  VIEWS
+import Home from "./views/Home";
+import FirstContextPage  from "./views/FirstContextPage";
+import SecondContextPage from "./views/SecondContextPage";
+import ThirdContextPage  from "./views/ThirdContextPage";
+import FourthContextPage from "./views/FourthContextPage";
+import "./App.css";
+import Fifthcontextpage from "./views/FifthContextPage";
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <Navbar />
+      <Routes>
+      <Route index element={<Home/>} />
+      <Route path="/firstContextPage"  element={<FirstContextPage/>} />
+      <Route path="/secondContextPage" element={<SecondContextPage/>} />
+      <Route path="/thirdContextPage"  element={<ThirdContextPage/>} />
+      <Route path="/fourthContextPage" element={<FourthContextPage/>} />
+      <Route path="/fifthContextPage"  element={<Fifthcontextpage/>} />
+      </Routes>
     </div>
   );
 }

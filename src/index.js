@@ -1,17 +1,33 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import { createRoot } from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom'
+import './index.css';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import FirstContext from './contexts/FirstContext'
+import { SecondContextTheProvider } from './contexts/SecondContext';
+import { ThirdContextTheProvider } from './contexts/ThirdContext';
+import { FourthContextTheProvider } from './contexts/FourtContext';
+import { FifthContextTheProvider } from './contexts/FifthContext';
+
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(
+  <BrowserRouter>
+    <FifthContextTheProvider>
+      <FourthContextTheProvider>
+        <ThirdContextTheProvider>
+          <SecondContextTheProvider>
+            <FirstContext.Provider value="hola">
+                <App />
+            </FirstContext.Provider>
+          </SecondContextTheProvider>
+        </ThirdContextTheProvider>
+      </FourthContextTheProvider>
+    </FifthContextTheProvider>
+  </BrowserRouter>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
